@@ -15,15 +15,15 @@ It uses the documented `PATCH https://api.fluxer.app/v1/users/@me/settings` endp
 
 ## Features
 
-- Zero dependencies: Python 3.9+ standard library only
-- **Linux: any Steam game you launch shows up automatically**, native or Proton, using its real name
-- **Picks up the Rich Presence games already have built in** (see below)
+- No dependencies: Python 3.9+ standard library only
+- **Linux: any Steam game you launch shows up automatically**, native or Proton, using its real name. Lossless Scaling is ignored.
+- **Picks up the Rich Presence games already have built in for Discord** (see below)
 - Otherwise falls back to the focused app, then the highest-priority running app from your list
 - Elapsed timer from the real process start time
 - Optional window title per app (`"title": true`)
 - Restores your original custom status when nothing matches, you go idle, or you quit
 - Status carries an expiry, so it clears itself even if the script is killed
-- Rate-limit aware (honours `Retry-After`), never updates more than every 30 s
+- Rate-limit aware (honors `Retry-After`), never updates more than every 30 seconds
 
 ## Setup (Windows)
 
@@ -55,26 +55,26 @@ sh install.sh
 - Stop (restores your status): `systemctl --user stop fluxer-presence`
 - Remove: `sh uninstall.sh`
 
-Test first with `python3 fluxer_presence.py --dry-run`.
+You can test first with `python3 fluxer_presence.py --dry-run`.
 
 **Focused-window detection** uses `hyprctl` on Hyprland, `swaymsg` on Sway, or `xdotool` on X11. On other Wayland desktops (GNOME, KDE) the focused window can't be read, so apps are picked by `priority` instead; Steam games and game rich presence still work.
 
 **Start at login:** the service starts with `graphical-session.target`, which GNOME, KDE and uwsm-managed sessions activate. If yours doesn't (e.g. plain Hyprland or Sway), `install.sh` prints a line to add to your compositor's autostart.
 
-**Steam games:** detected from Steam's launcher, with the name read from the game's Steam files. Your own `apps` entry wins if the game is listed there. Non-game Steam apps can be skipped with `steam_ignore` (Steam app IDs; Lossless Scaling and Wallpaper Engine are ignored by default).
+**Steam games:** games are detected from Steam's launcher, with the name read from the game's Steam files. Your own `apps` entry wins if the game is listed there. Non-game Steam apps can be skipped with `steam_ignore` (Steam app IDs; Lossless Scaling and Wallpaper Engine are ignored by default).
 
 ### Getting your token
 
-The script edits your own account settings, so it needs your user token. You get it from the Fluxer website (not the desktop app):
+The script edits your own account settings, so you will need your user token. You get it from the Fluxer website (not the desktop app):
 
 1. Open [fluxer.app](https://fluxer.app) in your browser and log in.
 2. Press **F12** or **Ctrl+Shift+I** to open DevTools and go to the **Network** tab.
 3. Type `api.fluxer.app` in the filter box. If the list is empty, click around in Fluxer (open a channel or server) so requests appear.
 4. Click any request in the list, then find **Request Headers** in the Headers panel.
-5. Copy the value next to `Authorization` (only the value, not the word "Authorization").
+5. Copy the value next to `Authorization` (only the value, not the word "Authorization"). If you don't see this, try a different request.
 6. Paste it into `config.json` between the quotes: `"token": "your-token-here"`.
 
-> **Treat your token like your password.** Anyone who has it can control your Fluxer account. Never share it, post it in screenshots, or send it to anyone, including people claiming to help with this script. `config.json` is in `.gitignore` so it won't be committed by accident.
+> **IMPORTANT: Treat your token like your password.** Anyone who has it can control your Fluxer account. Never share it, post it in screenshots, or send it to ANYONE.
 
 ## Game rich presence (built into games)
 
@@ -86,7 +86,7 @@ Most games and many apps already send their Discord Rich Presence to a local pip
 
 The game's display name comes from your `apps` list if the exe is there, otherwise from the exe file name. When a game sends nothing, the script falls back to plain app detection.
 
-**Discord has to be closed.** Games connect to the first pipe they can open, and Discord grabs `discord-ipc-0`. If Discord is running, the script logs a warning and games will keep talking to Discord. If you need both, use [fluxer-rpc](https://github.com/letruxux/fluxer-rpc) instead.
+**Discord has to be closed.** Games connect to the first pipe they can open, and Discord grabs `discord-ipc-0`. If Discord is running, the script logs a warning and games will keep talking to Discord. If you need both, use [fluxer-rpc](https://github.com/letruxux/fluxer-rpc) instead, but be aware that this repo is Windows-only.
 
 Set `"rpc_enabled": false` to turn this off.
 
