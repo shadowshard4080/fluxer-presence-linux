@@ -1,0 +1,4 @@
+# your token lives in config.json - never commit it
+config.json
+__pycache__/
+*.pyc

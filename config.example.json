@@ -1,0 +1,77 @@
+{
+  "token": "",
+  "poll_seconds": 2,
+  "min_update_seconds": 30,
+  "status_ttl_minutes": 5,
+  "idle_minutes": 10,
+  "restore_original_status": true,
+  "rpc_enabled": true,
+  "steam_games": true,
+  "steam_ignore": [
+    993090,
+    431960
+  ],
+  "apps": {
+    "bully.exe": {
+      "name": "Bully",
+      "verb": "Playing",
+      "emoji": "🎮",
+      "priority": 1
+    },
+    "gmod.exe": {
+      "name": "Garry's Mod",
+      "verb": "Playing",
+      "emoji": "🎮",
+      "priority": 1
+    },
+    "robloxplayerbeta.exe": {
+      "name": "Roblox",
+      "verb": "Playing",
+      "emoji": "🎮",
+      "priority": 1
+    },
+    "javaw.exe": {
+      "name": "Minecraft",
+      "verb": "Playing",
+      "emoji": "⛏️",
+      "priority": 1
+    },
+    "blender.exe": {
+      "name": "Blender",
+      "verb": "Modeling in",
+      "emoji": "🧊",
+      "priority": 2
+    },
+    "unity.exe": {
+      "name": "Unity",
+      "verb": "Working in",
+      "emoji": "🛠️",
+      "priority": 2
+    },
+    "godot.exe": {
+      "name": "Godot",
+      "verb": "Working in",
+      "emoji": "🛠️",
+      "priority": 2
+    },
+    "code.exe": {
+      "name": "VS Code",
+      "verb": "Coding in",
+      "emoji": "💻",
+      "priority": 3,
+      "title": true
+    },
+    "chrome.exe": {
+      "name": "Chrome",
+      "verb": "Browsing with",
+      "emoji": "🌐",
+      "priority": 9
+    },
+    "firefox.exe": {
+      "name": "Firefox",
+      "verb": "Browsing with",
+      "emoji": "🌐",
+      "priority": 9
+    }
+  }
+}
