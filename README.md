@@ -73,6 +73,7 @@ The script edits your own account settings, so you will need your user token. Yo
 4. Click any request in the list, then find **Request Headers** in the Headers panel.
 5. Copy the value next to `Authorization` (only the value, not the word "Authorization"). If you don't see this, try a different request.
 6. Paste it into `config.json` between the quotes: `"token": "your-token-here"`.
+7. Alternatively, you can find it under **Application** > **Local Storage** > `https://web.fluxer.app`. The token starts with `flx_`.
 
 > **IMPORTANT: Treat your token like your password.** Anyone who has it can control your Fluxer account. Never share it, post it in screenshots, or send it to ANYONE.
 
