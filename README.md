@@ -43,8 +43,8 @@ Press `Win+R`, type `shell:startup`, and drop a shortcut to `start_hidden.bat` i
 ## Setup (Linux)
 
 ```sh
-git clone https://github.com/shadowshard4080/fluxer-presence
-cd fluxer-presence
+git clone https://github.com/shadowshard4080/fluxer-presence-linux
+cd fluxer-presence-linux
 sh install.sh
 ```
 
